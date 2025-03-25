@@ -22,7 +22,7 @@ public class PedidosApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		Scanner sc = new Scanner(System.in);
 
-		Locale.setDefault(Locale.US);
+		sc.useLocale(Locale.US);
 
 		System.out.print("Digite o código do pedido: ");
 		int code = sc.nextInt();
@@ -37,7 +37,7 @@ public class PedidosApplication implements CommandLineRunner {
 
 		ShippmentService shippmentService = new ShippmentService();
 		OrderService orderService = new OrderService(shippmentService);
-		System.out.printf("O valor total será de %.2f", orderService.total(order));
+		System.out.printf("pedido código " + code + "\n" + "valor total: R$ %.2f ", orderService.total(order));
 		sc.close();
 	}
 
